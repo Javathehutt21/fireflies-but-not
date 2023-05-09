@@ -1,17 +1,24 @@
 enum RadioMessage {
     message1 = 49434
 }
+let A = false
+let B = false
 input.onButtonPressed(Button.A, function () {
     radio.setGroup(1)
-    radio.sendString("How are you?")
+    A = false
 })
 radio.onReceivedString(function (receivedString) {
     basic.showString(receivedString)
 })
 input.onButtonPressed(Button.B, function () {
     radio.setGroup(2)
+    B = false
 })
-radio.setGroup(1)
 basic.forever(function () {
-	
+    if (A == false && input.buttonIsPressed(Button.A)) {
+        radio.sendString("Left")
+    }
+    if (B == false && input.buttonIsPressed(Button.B)) {
+        radio.sendString("Right")
+    }
 })
