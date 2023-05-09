@@ -17,8 +17,12 @@ input.onButtonPressed(Button.B, function () {
 basic.forever(function () {
     if (A == false && input.buttonIsPressed(Button.A)) {
         radio.sendString("Left")
+        A = true
+        B = true
     }
     if (B == false && input.buttonIsPressed(Button.B)) {
         radio.sendString("Right")
+        B = true
+        A = true
     }
 })
